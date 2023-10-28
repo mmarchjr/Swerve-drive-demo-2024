@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveConstants;
 import frc.utils.SwerveUtils;
 
@@ -68,7 +69,7 @@ public class DriveSubsystem extends Subsystem {
   // Odometry class for tracking robot pose
   SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(
       DriveConstants.kDriveKinematics,
-      Rotation2d.fromDegrees(m_gyro.getAngle()),
+      Rotation2d.fromDegrees(m_gyro.getAngle()-gyroOffset),
       new SwerveModulePosition[] {
           m_frontLeft.getPosition(),
           m_frontRight.getPosition(),
@@ -109,7 +110,9 @@ public class DriveSubsystem extends Subsystem {
             m_rearRight.getPosition()
         });
   }
-
+public void resetGyro() {
+   m_gyro.reset();
+  }
   /**
    * Returns the currently-estimated pose of the robot.
    *

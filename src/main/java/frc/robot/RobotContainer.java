@@ -14,6 +14,7 @@ import com.pathplanner.lib.path.PathPlannerTrajectory;
 import com.pathplanner.lib.util.PPLibTelemetry;
 import com.pathplanner.lib.util.PathPlannerLogging;
 
+import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -84,10 +85,10 @@ SmartDashboard.putData("Autonomous",autoChooser);
     .whileTrue(new RunCommand(
         () -> m_robotDrive.setX(),
         m_robotDrive));
-        new JoystickButton(m_driverController, 4)
+        /*new JoystickButton(m_driverController, 4)
         .whileTrue(new RunCommand(
             () -> m_robotDrive.set0(),
-            m_robotDrive));
+            m_robotDrive));*/
   }
 
   /**
